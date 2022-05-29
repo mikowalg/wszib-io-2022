@@ -15,6 +15,12 @@ class Trojkaty {
          }
          // TODO: tutaj trzeba bedzie dopisac inne przypadki
     }
+    public static boolean czyIstniejeTrojkat(float a, float b, float c)
+	 if (a + b <= c) return false;
+	 if (a + c <= b) return false;
+         if (b + c <= a) return false;
+	 return true;
+    }
     /** Wyświetla ekran pomocy */
     public static void pomoc(){
         System.out.println("Acme INC. (C) 2022");
@@ -31,6 +37,9 @@ class Trojkaty {
         float b = Float.valueOf(args[1]);
         float c = Float.valueOf(args[2]);
         
-        jakiTrojkat(a, b, c);
+        if (!czyIstniejeTrojkat(a, b, c)) {
+	  System.out.println("Z poddanych dlugosci bokow nie da sie zbudowac trojkata!");
+	  System.exit(3);
+	}
     }
 }
