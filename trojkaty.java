@@ -25,13 +25,19 @@ class Trojkaty {
 	 if (a * a + c * c == b * b) return true;
 	 return false;
     }
-    public static void jakiTrojkat(float a, float b, float c){
+    public static void jakiTrojkat(float a, float b, float c) {
         int jednakoweDlugosci = ileJednakowych(a, b, c); 
-	if (jednakoweDlugosci > 1) {
-             System.out.println("Trójkąt równoboczny"); 
-         } else if (jednakoweDlugosci > 0) {
-	     System.out.println("Trojkat rownoramienny");
-	}
+        if (jednakoweDlugosci > 1) {
+                   System.out.println("Trójkąt równoboczny"); 
+               } else if (jednakoweDlugosci > 0) {
+             System.out.println("Trojkat rownoramienny");
+        }
+    }
+    public static boolean czyIstniejeTrojkat(float a, float b, float c) {
+       if (a + b <= c) return false;
+       if (a + c <= b) return false;
+       if (b + c <= a) return false;
+       return true;
     }
     /** Wyświetla ekran pomocy */
     public static void pomoc(){
@@ -49,6 +55,9 @@ class Trojkaty {
         float b = Float.valueOf(args[1]);
         float c = Float.valueOf(args[2]);
         
-        jakiTrojkat(a, b, c);
+        if (!czyIstniejeTrojkat(a, b, c)) {
+	  System.out.println("Z poddanych dlugosci bokow nie da sie zbudowac trojkata!");
+	  System.exit(3);
+	}
     }
 }
